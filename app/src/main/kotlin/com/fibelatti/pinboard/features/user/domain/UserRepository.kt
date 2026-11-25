@@ -66,6 +66,8 @@ interface UserRepository {
 
     var useBackgroundShareReceiver: Boolean
 
+    var showBackgroundShareSuccessToast: Boolean
+
     fun setAuthToken(appMode: AppMode, authToken: String)
 
     fun clearAuthToken(appMode: AppMode)

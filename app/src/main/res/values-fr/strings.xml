@@ -347,6 +347,8 @@
     <string name="user_preferences_use_background_share_receiver">Sauvegarde rapide en arrière-plan</string>
     <string name="user_preferences_use_background_share_receiver_description">Lorsqu\'elle est activée, la sélection de « Sauvegarde rapide d\'un favori » dans la feuille de partage enregistre le favori en arrière-plan et vous notifie du résultat par notification push</string>
     <string name="user_preferences_use_background_share_receiver_missing_permission">Accordez l\'autorisation de notification via l\'application Paramètres pour voir le résultat.</string>
+    <string name="user_preferences_show_background_share_success_toast">Notifier uniquement en cas d\'échec</string>
+    <string name="user_preferences_show_background_share_success_toast_description">Affiche un court message à l\'écran au lieu d\'une notification lorsque le favori est enregistré ou l\'était déjà</string>
     <string name="user_preferences_follow_redirects">Suivre les redirections</string>
     <string name="user_preferences_follow_redirects_description">Suivre automatiquement les redirections lors du partage d\'un favori vers l\'application, en enregistrant l\'URL finale. Augmente le temps de chargement lors de l\'enregistrement d\'un favori via l\'action de partage</string>
 

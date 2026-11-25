@@ -36,6 +36,7 @@ class UserPreferencesProvider : PreviewParameterProvider<UserPreferences> {
                 defaultTags = listOf(Tag(name = "Android")),
                 alphabetizeTags = true,
                 useBackgroundShareReceiver = false,
+                showBackgroundShareSuccessToast = false,
             ),
         )
 }

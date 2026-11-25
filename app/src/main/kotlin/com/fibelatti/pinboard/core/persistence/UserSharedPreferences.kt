@@ -77,6 +77,7 @@ const val KEY_ALPHABETIZE_TAGS = "ALPHABETIZE_TAGS"
 
 @VisibleForTesting
 const val KEY_USE_BACKGROUND_SHARE_RECEIVER = "USE_BACKGROUND_SHARE_RECEIVER"
+const val KEY_SHOW_BACKGROUND_SHARE_SUCCESS_TOAST = "SHOW_BACKGROUND_SHARE_SUCCESS_TOAST"
 // endregion
 
 @Singleton
@@ -245,4 +246,8 @@ class UserSharedPreferences @Inject constructor(private val sharedPreferences: S
     var useBackgroundShareReceiver: Boolean
         get() = sharedPreferences.get(KEY_USE_BACKGROUND_SHARE_RECEIVER, false)
         set(value) = sharedPreferences.put(KEY_USE_BACKGROUND_SHARE_RECEIVER, value)
+
+    var showBackgroundShareSuccessToast: Boolean
+        get() = sharedPreferences.get(KEY_SHOW_BACKGROUND_SHARE_SUCCESS_TOAST, false)
+        set(value) = sharedPreferences.put(KEY_SHOW_BACKGROUND_SHARE_SUCCESS_TOAST, value)
 }

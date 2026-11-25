@@ -64,9 +64,10 @@ class ShareReceiverWorker @AssistedInject constructor(
         title: String,
     ): kotlin.Result<Unit> {
         // Without notifications the result is shown as a toast, otherwise it would be lost
-        val useToast: Boolean = !appNotificationManager.canShowShareReceiverNotifications()
+        val failureAsToast: Boolean = !appNotificationManager.canShowShareReceiverNotifications()
+        val successAsToast: Boolean = failureAsToast || userRepository.showBackgroundShareSuccessToast
 
-        if (!useToast) {
+        if (!successAsToast) {
             appNotificationManager.sendNotification(
                 notificationId = notificationId,
                 notification = appNotificationManager.createShareReceiverNotification(
@@ -93,7 +94,7 @@ class ShareReceiverWorker @AssistedInject constructor(
 
                 if (existingPost != null) {
                     showResult(
-                        useToast = useToast,
+                        useToast = successAsToast,
                         title = if (existingPost.displayDateAdded.isBlank()) {
                             applicationContext.getString(R.string.share_notification_title_existing_no_date)
                         } else {
@@ -123,7 +124,7 @@ class ShareReceiverWorker @AssistedInject constructor(
                 addPost(params = newPost)
                     .onSuccess { post ->
                         showResult(
-                            useToast = useToast,
+                            useToast = successAsToast,
                             title = applicationContext.getString(R.string.share_notification_title_success),
                             text = post.title,
                             postId = post.id,
@@ -132,7 +133,7 @@ class ShareReceiverWorker @AssistedInject constructor(
                     .getOrThrow()
             }.onFailure {
                 showResult(
-                    useToast = useToast,
+                    useToast = failureAsToast,
                     title = applicationContext.getString(R.string.share_notification_title_failure),
                     text = url,
                 )

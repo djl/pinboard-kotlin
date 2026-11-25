@@ -337,6 +337,8 @@
     <string name="user_preferences_use_background_share_receiver">后台快速保存</string>
     <string name="user_preferences_use_background_share_receiver_description">启用后，在分享菜单中选择“快速保存书签”将在后台保存书签，并通过推送通知告知结果</string>
     <string name="user_preferences_use_background_share_receiver_missing_permission">通过设置应用授予通知权限以查看结果。</string>
+    <string name="user_preferences_show_background_share_success_toast">仅在失败时通知</string>
+    <string name="user_preferences_show_background_share_success_toast_description">保存书签或书签已存在时，显示简短的屏幕提示而不是通知</string>
     <string name="user_preferences_follow_redirects">跟随重定向</string>
     <string name="user_preferences_follow_redirects_description">分享书签到应用时自动跟随重定向，保存最终 URL。通过分享操作保存书签时会增加加载时间</string>
 

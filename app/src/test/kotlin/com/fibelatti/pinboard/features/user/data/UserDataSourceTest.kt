@@ -81,6 +81,7 @@ internal class UserDataSourceTest {
         defaultTags = emptyList(),
         alphabetizeTags = true,
         useBackgroundShareReceiver = false,
+        showBackgroundShareSuccessToast = false,
     )
 
     private val mockLinkdingSSLSocketFactory = mockk<LinkdingSSLSocketFactory> {
@@ -811,6 +812,32 @@ internal class UserDataSourceTest {
 
                 // THEN
                 verify { mockUserSharedPreferences.useBackgroundShareReceiver = value }
+            }
+        }
+
+        @Nested
+        inner class ShowBackgroundShareSuccessToast {
+
+            @Test
+            fun `WHEN showBackgroundShareSuccessToast getter is called THEN UserSharedPreferences is returned`() {
+                // GIVEN
+                val value = randomBoolean()
+                every { mockUserSharedPreferences.showBackgroundShareSuccessToast } returns value
+
+                // THEN
+                assertThat(userDataSource.showBackgroundShareSuccessToast).isEqualTo(value)
+            }
+
+            @Test
+            fun `WHEN showBackgroundShareSuccessToast setter is called THEN UserSharedPreferences is set`() {
+                // GIVEN
+                val value = randomBoolean()
+
+                // WHEN
+                userDataSource.showBackgroundShareSuccessToast = value
+
+                // THEN
+                verify { mockUserSharedPreferences.showBackgroundShareSuccessToast = value }
             }
         }
 

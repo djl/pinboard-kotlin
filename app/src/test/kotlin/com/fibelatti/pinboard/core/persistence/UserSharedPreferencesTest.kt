@@ -648,4 +648,24 @@ internal class UserSharedPreferencesTest {
         // THEN
         verify { mockEditor.putBoolean(KEY_USE_BACKGROUND_SHARE_RECEIVER, value) }
     }
+
+    @Test
+    fun `WHEN showBackgroundShareSuccessToast getter is called THEN its value is returned`() {
+        // GIVEN
+        val value = randomBoolean()
+        every { mockSharedPreferences.get(KEY_SHOW_BACKGROUND_SHARE_SUCCESS_TOAST, false) } returns value
+
+        // THEN
+        assertThat(userSharedPreferences.showBackgroundShareSuccessToast).isEqualTo(value)
+    }
+
+    @Test
+    fun `WHEN showBackgroundShareSuccessToast setter is called THEN KEY_SHOW_BACKGROUND_SHARE_SUCCESS_TOAST is set`() {
+        // WHEN
+        val value = randomBoolean()
+        userSharedPreferences.showBackgroundShareSuccessToast = value
+
+        // THEN
+        verify { mockEditor.putBoolean(KEY_SHOW_BACKGROUND_SHARE_SUCCESS_TOAST, value) }
+    }
 }

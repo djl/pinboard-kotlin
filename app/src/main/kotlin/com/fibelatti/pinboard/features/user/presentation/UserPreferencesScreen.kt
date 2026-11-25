@@ -628,6 +628,7 @@ private fun BookmarkingPreferencesContent(
                 notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
         },
+        onShowBackgroundShareSuccessToastChange = userPreferencesViewModel::saveShowBackgroundShareSuccessToast,
         onFollowRedirectsChange = userPreferencesViewModel::saveFollowRedirects,
         onRemoveUtmParametersChange = userPreferencesViewModel::saveRemoveUtmParameters,
         onRemovedUrlParametersChange = userPreferencesViewModel::saveRemovedUrlParameters,
@@ -649,6 +650,7 @@ private fun BookmarkingPreferencesContent(
     tagManagerState: TagManagerState,
     onEditAfterSharingChange: (EditAfterSharing) -> Unit,
     onUseBackgroundShareReceiverChange: (Boolean) -> Unit,
+    onShowBackgroundShareSuccessToastChange: (Boolean) -> Unit,
     onFollowRedirectsChange: (Boolean) -> Unit,
     onRemoveUtmParametersChange: (Boolean) -> Unit,
     onRemovedUrlParametersChange: (Set<String>) -> Unit,
@@ -721,6 +723,18 @@ private fun BookmarkingPreferencesContent(
                     ),
                     checked = userPreferences.useBackgroundShareReceiver,
                     onCheckedChange = onUseBackgroundShareReceiverChange,
+                    shape = shape,
+                )
+            }
+
+            item(visible = userPreferences.useBackgroundShareReceiver) { shape: Shape ->
+                SettingToggle(
+                    title = stringResource(id = R.string.user_preferences_show_background_share_success_toast),
+                    description = stringResource(
+                        id = R.string.user_preferences_show_background_share_success_toast_description,
+                    ),
+                    checked = userPreferences.showBackgroundShareSuccessToast,
+                    onCheckedChange = onShowBackgroundShareSuccessToastChange,
                     shape = shape,
                 )
             }
@@ -1035,6 +1049,7 @@ private fun BookmarkingPreferencesContentPreview(
             tagManagerState = TagManagerState(),
             onEditAfterSharingChange = {},
             onUseBackgroundShareReceiverChange = {},
+            onShowBackgroundShareSuccessToastChange = {},
             onFollowRedirectsChange = {},
             onRemoveUtmParametersChange = {},
             onRemovedUrlParametersChange = {},

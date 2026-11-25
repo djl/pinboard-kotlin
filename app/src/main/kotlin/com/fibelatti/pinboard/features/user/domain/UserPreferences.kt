@@ -30,4 +30,5 @@ data class UserPreferences(
     val defaultTags: List<Tag>,
     val alphabetizeTags: Boolean,
     val useBackgroundShareReceiver: Boolean,
+    val showBackgroundShareSuccessToast: Boolean,
 )

@@ -160,4 +160,8 @@ class UserPreferencesViewModel @Inject constructor(
     fun saveUseBackgroundShareReceiver(value: Boolean) {
         userRepository.useBackgroundShareReceiver = value
     }
+
+    fun saveShowBackgroundShareSuccessToast(value: Boolean) {
+        userRepository.showBackgroundShareSuccessToast = value
+    }
 }

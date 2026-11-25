@@ -347,6 +347,8 @@
     <string name="user_preferences_use_background_share_receiver">Guardado rápido en segundo plano</string>
     <string name="user_preferences_use_background_share_receiver_description">Cuando está activada, al seleccionar «Guardar marcador rápidamente» en la hoja de compartir, el marcador se guarda en segundo plano y se te notifica el resultado mediante una notificación push</string>
     <string name="user_preferences_use_background_share_receiver_missing_permission">Concede el permiso de notificación a través de la app de ajustes para ver el resultado.</string>
+    <string name="user_preferences_show_background_share_success_toast">Notificar solo en caso de error</string>
+    <string name="user_preferences_show_background_share_success_toast_description">Muestra un breve mensaje en pantalla en lugar de una notificación cuando el marcador se guarda o ya estaba guardado</string>
     <string name="user_preferences_follow_redirects">Seguir redirecciones</string>
     <string name="user_preferences_follow_redirects_description">Seguir automáticamente las redirecciones al compartir un marcador en la app, guardando la URL final. Aumenta el tiempo de carga al guardar un marcador mediante la acción de compartir</string>
 

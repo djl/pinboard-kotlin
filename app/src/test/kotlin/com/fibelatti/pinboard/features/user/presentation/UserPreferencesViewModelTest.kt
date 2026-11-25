@@ -315,6 +315,18 @@ internal class UserPreferencesViewModelTest : BaseViewModelTest() {
         verify { mockUserRepository.useBackgroundShareReceiver = value }
     }
 
+    @Test
+    fun `WHEN saveShowBackgroundShareSuccessToast is called THEN repository is updated`() {
+        // GIVEN
+        val value = randomBoolean()
+
+        // WHEN
+        userPreferencesViewModel.saveShowBackgroundShareSuccessToast(value)
+
+        // THEN
+        verify { mockUserRepository.showBackgroundShareSuccessToast = value }
+    }
+
     companion object {
 
         @JvmStatic
