@@ -406,6 +406,7 @@
     <string name="share_notification_title_foreground">Adding bookmark…</string>
     <string name="share_notification_title_success">Bookmark added successfully!</string>
     <string name="share_notification_title_existing">Existing bookmark found, saved on %s</string>
+    <string name="share_notification_title_existing_no_date">Existing bookmark found</string>
     <string name="share_notification_title_failure">Couldn\'t add bookmark</string>
     <string name="share_notification_opening_deep_link">Opening deep link…</string>
 

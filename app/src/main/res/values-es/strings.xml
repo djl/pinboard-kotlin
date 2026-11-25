@@ -406,6 +406,7 @@
     <string name="share_notification_title_foreground">Añadiendo marcador…</string>
     <string name="share_notification_title_success">¡Marcador añadido correctamente!</string>
     <string name="share_notification_title_existing">Marcador existente encontrado, guardado el %s</string>
+    <string name="share_notification_title_existing_no_date">Marcador existente encontrado</string>
     <string name="share_notification_title_failure">No se pudo añadir el marcador</string>
     <string name="share_notification_opening_deep_link">Abriendo enlace profundo…</string>
 

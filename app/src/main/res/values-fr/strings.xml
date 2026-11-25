@@ -406,6 +406,7 @@
     <string name="share_notification_title_foreground">Ajout du favori…</string>
     <string name="share_notification_title_success">Favori ajouté avec succès !</string>
     <string name="share_notification_title_existing">Favori existant trouvé, enregistré le %s</string>
+    <string name="share_notification_title_existing_no_date">Favori existant trouvé</string>
     <string name="share_notification_title_failure">Impossible d\'ajouter le favori</string>
     <string name="share_notification_opening_deep_link">Ouverture du lien profond…</string>
 

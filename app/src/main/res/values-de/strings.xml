@@ -400,6 +400,7 @@
     <string name="share_notification_title_foreground">Lesezeichen wird hinzugefügt…</string>
     <string name="share_notification_title_success">Lesezeichen erfolgreich hinzugefügt!</string>
     <string name="share_notification_title_existing">Vorhandenes Lesezeichen gefunden, gespeichert am %s</string>
+    <string name="share_notification_title_existing_no_date">Vorhandenes Lesezeichen gefunden</string>
     <string name="share_notification_title_failure">Lesezeichen konnte nicht hinzugefügt werden</string>
     <string name="share_notification_opening_deep_link">Deep Link wird geöffnet…</string>
 

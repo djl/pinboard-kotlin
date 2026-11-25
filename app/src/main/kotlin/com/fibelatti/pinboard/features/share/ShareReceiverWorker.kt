@@ -94,10 +94,14 @@ class ShareReceiverWorker @AssistedInject constructor(
                 if (existingPost != null) {
                     showResult(
                         useToast = useToast,
-                        title = applicationContext.getString(
-                            R.string.share_notification_title_existing,
-                            existingPost.displayDateAdded,
-                        ),
+                        title = if (existingPost.displayDateAdded.isBlank()) {
+                            applicationContext.getString(R.string.share_notification_title_existing_no_date)
+                        } else {
+                            applicationContext.getString(
+                                R.string.share_notification_title_existing,
+                                existingPost.displayDateAdded,
+                            )
+                        },
                         text = existingPost.title,
                         postId = existingPost.id,
                     )

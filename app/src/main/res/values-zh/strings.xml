@@ -397,6 +397,7 @@
     <string name="share_notification_title_foreground">正在添加书签…</string>
     <string name="share_notification_title_success">书签添加成功！</string>
     <string name="share_notification_title_existing">发现已存在的书签，保存于 %s</string>
+    <string name="share_notification_title_existing_no_date">发现已存在的书签</string>
     <string name="share_notification_title_failure">无法添加书签</string>
     <string name="share_notification_opening_deep_link">正在打开深层链接…</string>
 
