@@ -1,6 +1,7 @@
 package com.fibelatti.pinboard.features.share
 
 import android.content.Context
+import android.widget.Toast
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
@@ -21,6 +22,8 @@ import com.fibelatti.pinboard.features.posts.domain.usecase.UrlPreview
 import com.fibelatti.pinboard.features.user.domain.UserRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @HiltWorker
 class ShareReceiverWorker @AssistedInject constructor(
@@ -60,14 +63,19 @@ class ShareReceiverWorker @AssistedInject constructor(
         url: String,
         title: String,
     ): kotlin.Result<Unit> {
-        appNotificationManager.sendNotification(
-            notificationId = notificationId,
-            notification = appNotificationManager.createShareReceiverNotification(
+        // Without notifications the result is shown as a toast, otherwise it would be lost
+        val useToast: Boolean = !appNotificationManager.canShowShareReceiverNotifications()
+
+        if (!useToast) {
+            appNotificationManager.sendNotification(
                 notificationId = notificationId,
-                title = applicationContext.getString(R.string.share_notification_title_foreground),
-                text = inputData.getString(BUNDLE_KEY_URL).orEmpty(),
-            ),
-        )
+                notification = appNotificationManager.createShareReceiverNotification(
+                    notificationId = notificationId,
+                    title = applicationContext.getString(R.string.share_notification_title_foreground),
+                    text = inputData.getString(BUNDLE_KEY_URL).orEmpty(),
+                ),
+            )
+        }
 
         return extractUrl(params = url)
             .coMapCatching { (extractedUrl: String, highlightedText: String?) ->
@@ -84,17 +92,14 @@ class ShareReceiverWorker @AssistedInject constructor(
                     .getOrNull()
 
                 if (existingPost != null) {
-                    appNotificationManager.sendNotification(
-                        notificationId = notificationId,
-                        notification = appNotificationManager.createShareReceiverNotification(
-                            notificationId = notificationId,
-                            title = applicationContext.getString(
-                                R.string.share_notification_title_existing,
-                                existingPost.displayDateAdded,
-                            ),
-                            text = existingPost.title,
-                            postId = existingPost.id,
+                    showResult(
+                        useToast = useToast,
+                        title = applicationContext.getString(
+                            R.string.share_notification_title_existing,
+                            existingPost.displayDateAdded,
                         ),
+                        text = existingPost.title,
+                        postId = existingPost.id,
                     )
 
                     return@coMapCatching
@@ -113,27 +118,44 @@ class ShareReceiverWorker @AssistedInject constructor(
 
                 addPost(params = newPost)
                     .onSuccess { post ->
-                        appNotificationManager.sendNotification(
-                            notificationId = notificationId,
-                            notification = appNotificationManager.createShareReceiverNotification(
-                                notificationId = notificationId,
-                                title = applicationContext.getString(R.string.share_notification_title_success),
-                                text = post.title,
-                                postId = post.id,
-                            ),
+                        showResult(
+                            useToast = useToast,
+                            title = applicationContext.getString(R.string.share_notification_title_success),
+                            text = post.title,
+                            postId = post.id,
                         )
                     }
                     .getOrThrow()
             }.onFailure {
-                appNotificationManager.sendNotification(
-                    notificationId = notificationId,
-                    notification = appNotificationManager.createShareReceiverNotification(
-                        notificationId = notificationId,
-                        title = applicationContext.getString(R.string.share_notification_title_failure),
-                        text = url,
-                    ),
+                showResult(
+                    useToast = useToast,
+                    title = applicationContext.getString(R.string.share_notification_title_failure),
+                    text = url,
                 )
             }
+    }
+
+    private suspend fun showResult(
+        useToast: Boolean,
+        title: String,
+        text: String,
+        postId: String? = null,
+    ) {
+        if (useToast) {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(applicationContext, title, Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            appNotificationManager.sendNotification(
+                notificationId = notificationId,
+                notification = appNotificationManager.createShareReceiverNotification(
+                    notificationId = notificationId,
+                    title = title,
+                    text = text,
+                    postId = postId,
+                ),
+            )
+        }
     }
 
     companion object {

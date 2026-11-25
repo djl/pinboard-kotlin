@@ -394,7 +394,6 @@
     <string name="share_notification_channel_name">保存书签结果</string>
     <string name="share_notification_channel_description">显示将分享的 URL 保存为书签的结果通知</string>
     <string name="share_notification_unprocessable_url_feedback">无法处理空的 URL。</string>
-    <string name="share_notification_missing_permission_feedback">正在添加书签… 授予通知权限以查看结果。</string>
     <string name="share_notification_title_foreground">正在添加书签…</string>
     <string name="share_notification_title_success">书签添加成功！</string>
     <string name="share_notification_title_existing">发现已存在的书签，保存于 %s</string>

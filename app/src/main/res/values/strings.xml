@@ -403,7 +403,6 @@
     <string name="share_notification_channel_name">Save bookmark results</string>
     <string name="share_notification_channel_description">Shows notifications with the result of saving a shared URL as a bookmark</string>
     <string name="share_notification_unprocessable_url_feedback">Unable to process an empty URL.</string>
-    <string name="share_notification_missing_permission_feedback">Adding bookmark… Grant notification permission to see the result.</string>
     <string name="share_notification_title_foreground">Adding bookmark…</string>
     <string name="share_notification_title_success">Bookmark added successfully!</string>
     <string name="share_notification_title_existing">Existing bookmark found, saved on %s</string>

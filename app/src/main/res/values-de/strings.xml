@@ -397,7 +397,6 @@
     <string name="share_notification_channel_name">Ergebnisse beim Speichern von Lesezeichen</string>
     <string name="share_notification_channel_description">Zeigt Benachrichtigungen mit dem Ergebnis des Speicherns einer geteilten URL als Lesezeichen an</string>
     <string name="share_notification_unprocessable_url_feedback">Eine leere URL kann nicht verarbeitet werden.</string>
-    <string name="share_notification_missing_permission_feedback">Lesezeichen wird hinzugefügt… Erteilen Sie die Benachrichtigungsberechtigung, um das Ergebnis zu sehen.</string>
     <string name="share_notification_title_foreground">Lesezeichen wird hinzugefügt…</string>
     <string name="share_notification_title_success">Lesezeichen erfolgreich hinzugefügt!</string>
     <string name="share_notification_title_existing">Vorhandenes Lesezeichen gefunden, gespeichert am %s</string>

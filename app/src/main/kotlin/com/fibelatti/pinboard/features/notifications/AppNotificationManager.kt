@@ -99,6 +99,16 @@ class AppNotificationManager @Inject constructor(
         }
     }
 
+    /**
+     * Covers the Android 13+ permission, notifications disabled for the whole app and the channel being blocked.
+     */
+    fun canShowShareReceiverNotifications(): Boolean {
+        val manager: NotificationManager = notificationManager ?: return false
+        val channel: NotificationChannel? = manager.getNotificationChannel(SHARE_RECEIVER_NOTIFICATION_CHANNEL_ID)
+
+        return manager.areNotificationsEnabled() && channel?.importance != NotificationManager.IMPORTANCE_NONE
+    }
+
     fun cancelNotification(notificationId: Int) {
         notificationManager?.cancel(notificationId)
     }

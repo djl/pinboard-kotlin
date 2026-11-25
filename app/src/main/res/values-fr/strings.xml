@@ -403,7 +403,6 @@
     <string name="share_notification_channel_name">Résultats de l\'enregistrement des favoris</string>
     <string name="share_notification_channel_description">Affiche des notifications avec le résultat de l\'enregistrement d\'une URL partagée en tant que favori</string>
     <string name="share_notification_unprocessable_url_feedback">Impossible de traiter une URL vide.</string>
-    <string name="share_notification_missing_permission_feedback">Ajout du favori… Accordez l\'autorisation de notification pour voir le résultat.</string>
     <string name="share_notification_title_foreground">Ajout du favori…</string>
     <string name="share_notification_title_success">Favori ajouté avec succès !</string>
     <string name="share_notification_title_existing">Favori existant trouvé, enregistré le %s</string>

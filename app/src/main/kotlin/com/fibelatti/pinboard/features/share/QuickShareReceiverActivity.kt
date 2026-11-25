@@ -8,7 +8,6 @@ import androidx.core.app.ShareCompat
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import com.fibelatti.pinboard.R
-import com.fibelatti.pinboard.features.notifications.isNotificationPermissionGranted
 import com.fibelatti.pinboard.features.user.domain.UserRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -39,10 +38,6 @@ class QuickShareReceiverActivity : AppCompatActivity() {
             }
 
             isBackgroundEligible() -> {
-                if (!isNotificationPermissionGranted()) {
-                    showMissingPermissionWarning()
-                }
-
                 enqueueWork(url = url, title = title)
             }
 
@@ -55,14 +50,6 @@ class QuickShareReceiverActivity : AppCompatActivity() {
     private fun isBackgroundEligible(): Boolean {
         return userRepository.useBackgroundShareReceiver &&
             userRepository.userCredentials.value.getConnectedServices().size == 1
-    }
-
-    private fun showMissingPermissionWarning() {
-        Toast.makeText(
-            /* context = */ this,
-            /* resId = */ R.string.share_notification_missing_permission_feedback,
-            /* duration = */ Toast.LENGTH_LONG,
-        ).show()
     }
 
     private fun enqueueWork(url: String, title: String?) {
